@@ -36,7 +36,7 @@ services:
 
         container_name: private-openvpn-keys
         
-        image: softwareshinobi/vpn-server-key-publisher
+        image: softwareshinobi/embanet-intranet-keys
 
         restart: unless-stopped
 
@@ -86,18 +86,20 @@ services:
 ##
 ##########################################
 
-    private-network-website:
+    private-network-landing:
 
-        container_name: private-network-website
+        container_name: private-network-landing
 
-        image: https
+        image: softwareshinobi/embanet-intranet-landing
 
+        build: 
+
+            context: landing
+
+            dockerfile: Dockerfile
+ 
         restart: unless-stopped
- 
-        volumes:
-
-            - /tmp/:/tmp/
- 
+  
         ports:
 
             - "127.0.0.1:5555:80"
