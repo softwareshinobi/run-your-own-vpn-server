@@ -6,7 +6,7 @@ services:
 ##
 ##########################################
 
-    public-vpn-server:
+    public-openvpn-server:
 
         container_name: public-openvpn-server
         
@@ -32,14 +32,20 @@ services:
 ##
 ##########################################
 
-    private-openvpn-iam:
+    private-openvpn-keys:
 
-        container_name: private-openvpn-iam
+        container_name: private-openvpn-keys
         
         image: softwareshinobi/vpn-server-key-publisher
 
         restart: unless-stopped
 
+        build: 
+
+            context: publisher
+
+            dockerfile: Dockerfile
+      
         volumes:
 
             - /volumes/intranet/openvpn/:/usr/share/nginx/html/keys/
@@ -64,7 +70,7 @@ services:
 
         build: 
 
-            context: .
+            context: docs
 
             dockerfile: Dockerfile
       
@@ -84,7 +90,7 @@ services:
 
         container_name: private-network-website
 
-        image: softwareshinobi/vpn-server-key-publisher
+        image: https
 
         restart: unless-stopped
  

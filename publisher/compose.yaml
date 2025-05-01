@@ -1,0 +1,20 @@
+
+services:
+
+    vpn-server-key-publisher:
+
+        container_name: vpn-server-key-publisher
+        
+        image: softwareshinobi/vpn-server-key-publisher
+
+        build: 
+
+            context: .
+
+            dockerfile: Dockerfile
+    
+        restart: unless-stopped
+
+        ports:
+
+            - "8080:80"
