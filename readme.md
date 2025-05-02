@@ -76,9 +76,9 @@ Key configuration points include:
 
 | IP Version | Type          | Protocol | Port Range | Source      | Description                                     | Related Service(s)               |
 |------------|---------------|----------|------------|-------------|-------------------------------------------------|----------------------------------|
-| IPv4       | HTTPS         | TCP      | 443        | 0.0.0.0/0   | Allows secure web access                        | (Potentially for web UI or proxy) |
-| IPv6       | Custom UDP    | UDP      | 1194       | ::/0        | Allows OpenVPN traffic (IPv6)                   | `public-openvpn-server`          |
-| IPv4       | Custom TCP    | TCP      | 1194       | 0.0.0.0/0   | Allows TCP traffic on port 1194                 | `public-openvpn-proxy`           |
-| IPv4       | HTTP          | TCP      | 80         | 0.0.0.0/0   | Allows standard web access                      | (Potentially for web UI or proxy) |
-| IPv4       | Custom UDP    | UDP      | 1194       | 0.0.0.0/0   | Allows OpenVPN traffic (IPv4)                   | `public-openvpn-server`          |
 | IPv4       | SSH           | TCP      | 22         | 0.0.0.0/0   | Allows secure shell access for management       | Host machine                     |
+| IPv4       | HTTP          | TCP      | 80         | 0.0.0.0/0   | Allows standard web access                      | (Potentially for web UI or proxy) |
+| IPv4       | HTTPS         | TCP      | 443        | 0.0.0.0/0   | Allows secure web access                        | (Potentially for web UI or proxy) |
+| IPv4       | Custom TCP    | TCP      | 1194       | 0.0.0.0/0   | Allows TCP traffic on port 1194                 | `public-openvpn-proxy`           |
+| IPv4       | Custom UDP    | UDP      | 1194       | 0.0.0.0/0   | Allows OpenVPN traffic (IPv4)                   | `public-openvpn-server`          |
+

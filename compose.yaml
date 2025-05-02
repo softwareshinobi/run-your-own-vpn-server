@@ -46,9 +46,9 @@ services:
 
         environment:
             
-            BASIC_AUTH_USERNAME: shinobi
-
-            BASIC_AUTH_PASSWORD: password
+##            BASIC_AUTH_USERNAME: shinobi
+##
+##            BASIC_AUTH_PASSWORD: password
 
             PROXY_PASS: http://private-openvpn-keys/
 
