@@ -71,3 +71,14 @@ Key configuration points include:
 * **Key Distribution/Proxy:** Access the key distribution service via the `public-openvpn-proxy`. Based on the configuration, this service is exposed on **TCP port 1194** of the host. You will likely need to authenticate using the basic authentication credentials configured for the proxy. The proxy then forwards requests to the internal `private-openvpn-keys` service.
 * **Documentation:** The documentation service is exposed on **TCP port 1180** of the host. Access this port via your web browser to view the VPN server documentation.
 * **Internal Services:** Services bound to internal IPs (like the landing page on ports 5
+
+## Necessary Firewall Configuration
+
+| IP Version | Type          | Protocol | Port Range | Source      | Description                                     | Related Service(s)               |
+|------------|---------------|----------|------------|-------------|-------------------------------------------------|----------------------------------|
+| IPv4       | HTTPS         | TCP      | 443        | 0.0.0.0/0   | Allows secure web access                        | (Potentially for web UI or proxy) |
+| IPv6       | Custom UDP    | UDP      | 1194       | ::/0        | Allows OpenVPN traffic (IPv6)                   | `public-openvpn-server`          |
+| IPv4       | Custom TCP    | TCP      | 1194       | 0.0.0.0/0   | Allows TCP traffic on port 1194                 | `public-openvpn-proxy`           |
+| IPv4       | HTTP          | TCP      | 80         | 0.0.0.0/0   | Allows standard web access                      | (Potentially for web UI or proxy) |
+| IPv4       | Custom UDP    | UDP      | 1194       | 0.0.0.0/0   | Allows OpenVPN traffic (IPv4)                   | `public-openvpn-server`          |
+| IPv4       | SSH           | TCP      | 22         | 0.0.0.0/0   | Allows secure shell access for management       | Host machine                     |
