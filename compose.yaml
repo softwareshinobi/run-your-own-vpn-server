@@ -32,6 +32,26 @@ services:
 ##
 ##########################################
 
+    public-openvpn-proxy:
+
+        container_name: public-openvpn-proxy
+
+        image: softwareshinobi/basic-container-auth-proxy
+
+        restart: unless-stopped
+
+        ports:
+
+            - 1194:80
+
+        environment:
+            
+##            BASIC_AUTH_USERNAME: shinobi
+##
+##            BASIC_AUTH_PASSWORD: password
+
+            PROXY_PASS: http://private-openvpn-keys/
+
     private-openvpn-keys:
 
         container_name: private-openvpn-keys
