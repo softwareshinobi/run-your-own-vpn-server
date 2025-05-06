@@ -1,8 +1,14 @@
 #!/bin/bash
 
-sudo apt update;
+set -e
 
-sudo apt -y install ca-certificates curl;
+set -x
+
+##
+
+sudo apt update
+
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 
 ## aptitude package dependency setup
 
@@ -12,6 +18,8 @@ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyring
 
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
+##
+
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -19,15 +27,13 @@ echo \
 
 ## docker compose install
 
-#sudo apt update
-
-#sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose docker docker.io
+sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 ## run the sample container
 
-reset;clear;
+##reset;clear;
 
 sudo docker run hello-world
 

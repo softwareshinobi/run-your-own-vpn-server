@@ -23,4 +23,3 @@ sudo bash 3-reconfigure-docker0-ip.bash
 sudo bash 4-install-configure-openvpn.bash
 
 echo "finished configuring vpn server"
-
