@@ -6,9 +6,9 @@ services:
 ##
 ##########################################
 
-    public-openvpn-server:
+    public-vpn-server:
 
-        container_name: public-openvpn-server
+        container_name: public-vpn-server
         
         image: kylemanna/openvpn
 
@@ -26,15 +26,33 @@ services:
 
             - "1194:1194/udp"
 
+    public-vpn-docs:
+
+        container_name: public-vpn-docs
+
+        image: softwareshinobi/embanet-intranet-docs
+
+        build: 
+
+            context: docs
+
+            dockerfile: Dockerfile
+      
+        restart: unless-stopped
+  
+        ports:
+
+            - "1180:80"
+
 ##########################################
 ##
 ## private / identity & access managment
 ##
 ##########################################
 
-    public-openvpn-keys-auth:
+    public-vpn-proxy:
 
-        container_name: public-openvpn-keys-auth
+        container_name: public-vpn-proxy
 
         image: softwareshinobi/basic-container-auth-proxy
 
@@ -50,11 +68,11 @@ services:
 ##
 ##            BASIC_AUTH_PASSWORD: password
 
-            PROXY_PASS: http://private-openvpn-keys/
+            PROXY_PASS: http://private-vpn-keys/
 
-    private-openvpn-keys:
+    private-vpn-keys:
 
-        container_name: private-openvpn-keys
+        container_name: private-vpn-keys
         
         image: softwareshinobi/embanet-intranet-keys
 
@@ -78,37 +96,13 @@ services:
 
 ##########################################
 ##
-## public / vpn server documentation
+## intranet services / accessible on VPS only
 ##
 ##########################################
 
-    private-openvpn-docs:
+    private-intranet-landing:
 
-        container_name: private-openvpn-docs
-
-        image: softwareshinobi/embanet-intranet-docs
-
-        build: 
-
-            context: docs
-
-            dockerfile: Dockerfile
-      
-        restart: unless-stopped
-  
-        ports:
-
-            - "1180:80"
-
-##########################################
-##
-## vpn traffic / accessible on VPS only
-##
-##########################################
-
-    private-network-landing:
-
-        container_name: private-network-landing
+        container_name: private-intranet-landing
 
         image: softwareshinobi/embanet-intranet-landing
 
