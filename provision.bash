@@ -14,7 +14,6 @@ set -x
 
 ##
 
-cd provision/cloudubuntu
+cd remote/cloudubuntu
 
 sudo bash provision.bash
-

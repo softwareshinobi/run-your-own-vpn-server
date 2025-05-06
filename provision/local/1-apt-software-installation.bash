@@ -1,6 +1,10 @@
 #!/bin/bash
 
+##
+
 set -x
+
+set -e
 
 ##
 
@@ -12,4 +16,6 @@ clear
 
 sudo apt update
 
-sudo apt install -y openvpn net-tools curl wget 
+##
+
+sudo apt install -y net-tools curl wget 
