@@ -32,9 +32,9 @@ services:
 ##
 ##########################################
 
-    public-openvpn-proxy:
+    public-openvpn-keys-auth:
 
-        container_name: public-openvpn-proxy
+        container_name: public-openvpn-keys-auth
 
         image: softwareshinobi/basic-container-auth-proxy
 
@@ -122,6 +122,6 @@ services:
   
         ports:
 
-            - "127.0.0.1:5555:80"
+            - "127.0.0.1:80:80"
             
-            - "10.28.1.1:5555:80"        
+            - "10.28.1.1:80:80"        
